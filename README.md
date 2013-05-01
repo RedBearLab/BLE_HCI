@@ -40,8 +40,8 @@ Typical connections:
 2. Arduino (A) <-> Serial <-> BLE Mini (A) <----- BLE Link -----> BLE Mini (C) <-> USB <-> Raspberry Pi
 
 * Suggest to use Arduino Leonardo or other boards with more than one serial to try this example.
-* We use the USB CDC serial for debug and one for connecting to the BLE Mini on Leonardo board.
-* Uno has only one serial and we do not use SoftwareSerial because it only has 64-byte buffer, not enough to receive HCI data.
+* We use the USB CDC serial for debug/UI and one for connecting to the BLE Mini on Leonardo board.
+* Uno has only one serial and we do not use SoftwareSerial because sometimes data recevied incorrectly.
 
 Requirements:
 1. BLE HCI library for Arduino
