@@ -124,12 +124,12 @@ void loop()
       
       case '1':
         p(" -> Send \"Hello World!\" to the Biscuit peripheral...\r\n");
-        biscuit_central_write_bytes((uint8 *)"Hello World!", 12);
+        biscuit_central_write_bytes((uint8 *)"Hello World!\r\n", 14);
         break;
         
       case '2':
         p(" -> Send \"I love BLE!\" to the Biscuit peripheral...\r\n");
-        biscuit_central_write_bytes((uint8 *)"I love BLE!", 11);
+        biscuit_central_write_bytes((uint8 *)"I love BLE!\r\n", 13);
         break;
 
       default:
