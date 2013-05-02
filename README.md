@@ -8,7 +8,7 @@ The libraries was written for Python and Arduino. Tested on Windows and Mac OS X
 Example 1
 =========
 
-PC/Mac as BLE central role connecting to BLE Mini running Biscuit firmware as peripheral role
+PC/Mac as BLE central role and via the BLE link, connecting to BLE Mini running Biscuit firmware as peripheral role
 
 Typical connections:<br/>
 1. PC <-> USB <-> BLE Mini (HCI) <----- BLE Link ------> BLE Mini (Biscuit) <-> Serial <-> Ardino<br/>
@@ -26,14 +26,14 @@ Requirements:<br/>
 8. Biscuit central Python script
 
 How it works:<br/>
-When you connect the BLE Mini (HCI) to your PC via the USB port, it will function as an USB CDC (Virtual COM Port). On Windows, it will ask for a device driver, so you need to install the USB CDC driver. It shows as a COM port £¨e.g. COM5). For Linux or Mac OS X, it will work as an tty device (e.g. ttyACM0 or tty.usbmodem1311).<br/>
+When you connect the BLE Mini (HCI) to your PC via the USB port, it will function as an USB CDC (Virtual COM Port). On Windows, it will ask for a device driver, so you need to install the USB CDC driver. It shows as a COM port (e.g. COM5). For Linux or Mac OS X, it will work as a tty device (e.g. ttyACM0 or tty.usbmodem1311).<br/>
 
 The Biscuit central Python script controls the virtual COM port, sending BLE command over the port, and listening to the HCI events.<br/>
 
 Example 2
 =========
 
-Arduino as BLE central connecting to BLE Mini running Biscuit firmware as peripheral role
+Arduino as BLE central role and via the BLE link, connecting to BLE Mini running Biscuit firmware as peripheral role
 
 Typical connections:<br/>
 1. Arduino (A) <-> Serial <-> BLE Mini (A) <----- BLE Link -----> BLE Mini (B) <-> Serial <-> Arduino (B)<br/>
@@ -41,13 +41,14 @@ Typical connections:<br/>
 
 * Suggest to use Arduino Leonardo or other boards with more than one serial to try this example.
 * We use the USB CDC serial for debug/UI and one for connecting to the BLE Mini on Leonardo board.
-* Uno has only one serial and we do not use SoftwareSerial because sometimes data recevied incorrectly.
-  -> We used AltSoftSerial, so Uno works now, but the baudrate limited to 57600bps.
-  -> http://www.pjrc.com/teensy/td_libs_AltSoftSerial.html
+* Uno has only one serial and we do not use SoftwareSerial because sometimes data recevied incorrectly.<br/>
+  -> We used AltSoftSerial, so Uno works now, but the baudrate limited to 57600bps.<br/>
+  -> http://www.pjrc.com/teensy/td_libs_AltSoftSerial.html<br/>
 * Tested with Uno (use pin 8, 9), Leonardo (use pin 0, 1), Mega 2560 (use TX1, RX1)
 
 Requirements:<br/>
 1. BLE HCI library for Arduino<br/>
 2. Arduino (A) running HCI library<br/>
-3. BLE Mini (A) running HCI firmware (Serial)<br/>
-4. BLE Mini (B or C) running Biscuit firmware (Serial or USB)
+3. AltSoftSerial (requred for Arduino Uno)<br/>
+4. BLE Mini (A) running HCI firmware (Serial)<br/>
+5. BLE Mini (B or C) running Biscuit firmware (Serial or USB)
