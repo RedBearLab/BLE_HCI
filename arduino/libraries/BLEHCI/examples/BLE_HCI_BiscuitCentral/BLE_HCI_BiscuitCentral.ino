@@ -4,6 +4,12 @@
 #include "biscuit_central.h"
 #include "ble_hci.h"
 
+#if defined(__AVR_ATmega328P__) // Arduino UNO?
+  #include <AltSoftSerial.h>
+  AltSoftSerial Serial1;
+  // Refer to this: http://www.pjrc.com/teensy/td_libs_AltSoftSerial.html
+#endif
+
 uint8_t found_address[6];
 
 void p(char *fmt, ... )
@@ -32,7 +38,7 @@ byte ble_event_process()
   uint8_t buf[64];
   
   type = Serial1.read();
-  delay(30);
+  delay(35);
   event_code = Serial1.read();
   data_len = Serial1.read();
   
@@ -43,7 +49,7 @@ byte ble_event_process()
   
   for (int i = 0; i < data_len; i++)
     buf[i] = Serial1.read();
-  
+    
   event = BUILD_UINT16(buf[0], buf[1]);
   status1 = buf[2];
   
@@ -87,10 +93,19 @@ byte ble_event_process()
 
 void setup()
 { 
-  Serial1.begin(115200);
+#if defined(__AVR_ATmega328P__)
+  Serial1.begin(57600);
+  Serial.begin(57600);
+
+  ble_hci_init(&Serial1);
+#else
+  Serial1.begin(57600);
   Serial.begin(115200);
   while (!Serial);
-  
+
+  ble_hci_init();
+#endif
+
   biscuit_central_init();
 }
 

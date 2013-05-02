@@ -1,7 +1,19 @@
 
 #include "typedef.h"
 #include "ble_hci.h"
-#include <SoftwareSerial.h>
+
+#if defined(__AVR_ATmega328P__)
+  #include <AltSoftSerial.h>
+  AltSoftSerial *TX;
+  uint8 ble_hci_init(AltSoftSerial *ser)
+  {
+    TX = ser;
+  }
+#else
+  uint8 ble_hci_init()
+  {
+  }
+#endif
 
 bStatus_t GAP_DeviceInit( uint8 taskID, uint8 profileRole, uint8 maxScanResponses, uint8 *pIRK, uint8 *pSRK, uint32 *pSignCounter )
 {
@@ -22,7 +34,12 @@ bStatus_t GAP_DeviceInit( uint8 taskID, uint8 profileRole, uint8 maxScanResponse
   memcpy(&buf[len], pSignCounter, 4); //  SignCounter
   len += 4;
 
+#if defined(__AVR_ATmega328P__)
+  (*TX).write(buf, len);
+#else
   Serial1.write(buf, len);
+#endif
+
   return 1;
 }
 
@@ -43,7 +60,12 @@ bStatus_t GAP_DeviceDiscoveryRequest( gapDevDiscReq_t *pParams )
 //  hci_tl_write(buf, len);
 //  hci_tl_wait_for_response();
   
+#if defined(__AVR_ATmega328P__)
+  (*TX).write(buf, len);
+#else
   Serial1.write(buf, len);
+#endif
+
   return 1;
 }
 
@@ -64,7 +86,12 @@ bStatus_t GAP_EstablishLinkReq( gapEstLinkReq_t *pParams )
   memcpy(&buf[len], pParams->peerAddr, B_ADDR_LEN);
   len+=B_ADDR_LEN;
 
+#if defined(__AVR_ATmega328P__)
+  (*TX).write(buf, len);
+#else
   Serial1.write(buf, len);
+#endif
+
   return 1;
 }
 
@@ -86,7 +113,12 @@ bStatus_t GATT_WriteCharValue( uint16 connHandle, attWriteReq_t *pReq, uint8 tas
   memcpy(&buf[len], pReq->value, pReq->len);
   len += pReq->len;
   
+#if defined(__AVR_ATmega328P__)
+  (*TX).write(buf, len);
+#else
   Serial1.write(buf, len);
+#endif
+
   return 1;
 }
 

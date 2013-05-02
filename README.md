@@ -42,6 +42,9 @@ Typical connections:<br/>
 * Suggest to use Arduino Leonardo or other boards with more than one serial to try this example.
 * We use the USB CDC serial for debug/UI and one for connecting to the BLE Mini on Leonardo board.
 * Uno has only one serial and we do not use SoftwareSerial because sometimes data recevied incorrectly.
+  -> We used AltSoftSerial, so Uno works now, but the baudrate limited to 57600bps.
+  -> http://www.pjrc.com/teensy/td_libs_AltSoftSerial.html
+* Tested with Uno (use pin 8, 9), Leonardo (use pin 0, 1), Mega 2560 (use TX1, RX1)
 
 Requirements:<br/>
 1. BLE HCI library for Arduino<br/>
