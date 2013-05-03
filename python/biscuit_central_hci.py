@@ -402,12 +402,12 @@ while True:
   if kb.kbhit():
     ch = kb.getch()
 
-    if ch == '1':
+    if ch == 'd':
       print 'Discovery...'
       GAPCentralRole_StartDiscovery( DEFAULT_DISCOVERY_MODE,
                                      DEFAULT_DISCOVERY_ACTIVE_SCAN,
                                      DEFAULT_DISCOVERY_WHITE_LIST )
-    elif ch == '2':
+    elif ch == 'e':
         print 'Establish Link...'
         print 'Connecting to: ' + hex(ord(found_address[0])) + ':'  + hex(ord(found_address[1])) + ':'  + hex(ord(found_address[2])) + ':'  + hex(ord(found_address[3])) + ':'  + hex(ord(found_address[4])) + ':'  + hex(ord(found_address[5]))
 
@@ -415,22 +415,22 @@ while True:
                                 DEFAULT_LINK_WHITE_LIST,
                                 '\x00', found_address )
 
-    elif ch == '3':
+    elif ch == 'n':
         print 'Enable Notification...'
         ble_enable_notification()
 
-    elif ch == '!':
+    elif ch == 'q':
         print 'Quit'
         TX.close()
         break
 
+    elif ch == '1':
+        print 'Send -> Hello World!'
+        ble_write_bytes('Hello World!\r\n')
+
+    elif ch == '2':
+        print 'Send -> I love BLE!'
+        ble_write_bytes('I love BLE!\r\n')
+
     else:
-        if is_connected == True:
-          if ord(ch) == 10:
-            if str <> '':
-              print 'Sending: ' + str
-              ble_write_bytes(str + '\r\n')
-              str = ''
-          else:
-            print ch
-            str += ch
+        print 'Invalid command.'

@@ -30,6 +30,19 @@ When you connect the BLE Mini (HCI) to your PC via the USB port, it will functio
 
 The Biscuit central Python script controls the virtual COM port, sending BLE command over the port, and listening to the HCI events.<br/>
 
+You need to change the following lines to match your COM port and bardrate:
+if os.name == 'posix':
+  TX.port = '/dev/tty.usbmodem1431'
+else:
+  TX.port = 'COM5'
+TX.baudrate = 115200
+
+Press 'd' to start discovery, it will show if any device is found, and then press 'e' to establish a BLE link with the device, you need then enable the notification before you can receive data from the device.
+
+Press '1', it will send a string 'Hello World!' to the device and press '2' will send 'I love BLE!'.
+
+You can do many other interesting things as you want with BLE.
+
 Example 2
 =========
 
@@ -52,3 +65,8 @@ Requirements:<br/>
 3. AltSoftSerial (requred for Arduino Uno)<br/>
 4. BLE Mini (A) running HCI firmware (Serial)<br/>
 5. BLE Mini (B or C) running Biscuit firmware (Serial or USB)
+
+How it works
+============
+
+Similar to the Example 1, the Arduino will keep tracks of HCI events from the serial port. You can see those events and send command using the Arduino IDE's Serial Monitor.
