@@ -1,7 +1,7 @@
 BLE_HCI
 =======
 
-Allows external MCU to connect BLE (CC2540) using Bluetooth HCI such as Windows/Linux/Mac, Arduino, Respberry Pi, etc.
+Allows external System or MCU to control BLE chip (CC2540) using Bluetooth HCI mode such as Windows/Linux/Mac, Arduino (AVR), Respberry Pi (ARM11), etc.
 
 The libraries was written for Python and Arduino. Tested on Windows and Mac OS X, but this is still a work in progress, not all HCI commands and events have been implemented or fully tested.
 
@@ -30,12 +30,12 @@ When you connect the BLE Mini (HCI) to your PC via the USB port, it will functio
 
 The Biscuit central Python script controls the virtual COM port, sending BLE command over the port, and listening to the HCI events.<br/>
 
-You need to change the following lines to match your COM port and bardrate:
-if os.name == 'posix':
-  TX.port = '/dev/tty.usbmodem1431'
-else:
-  TX.port = 'COM5'
-TX.baudrate = 115200
+You need to change the following lines to match your COM port and bardrate:<br/>
+if os.name == 'posix':<br/>
+  TX.port = '/dev/tty.usbmodem1431'<br/>
+else:<br/>
+  TX.port = 'COM5'<br/>
+TX.baudrate = 115200<br/>
 
 Press 'd' to start discovery, it will show if any device is found, and then press 'e' to establish a BLE link with the device, you need then enable the notification before you can receive data from the device.
 
@@ -66,7 +66,5 @@ Requirements:<br/>
 4. BLE Mini (A) running HCI firmware (Serial)<br/>
 5. BLE Mini (B or C) running Biscuit firmware (Serial or USB)
 
-How it works
-============
-
+How it works:<br/>
 Similar to the Example 1, the Arduino will keep tracks of HCI events from the serial port. You can see those events and send command using the Arduino IDE's Serial Monitor.
