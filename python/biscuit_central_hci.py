@@ -4,11 +4,12 @@ import struct
 from select import select
 
 # not posix system, we need msvcrt library for kbhit
+# for posix, we need termios and atexit
 if os.name <> 'posix':
   import msvcrt
-
-import atexit
-import termios
+else:
+  import atexit
+  import termios
 
 #
 #    Structures
