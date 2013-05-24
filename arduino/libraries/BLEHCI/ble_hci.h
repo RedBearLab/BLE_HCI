@@ -15,6 +15,7 @@ bStatus_t GAP_DeviceInit( uint8 taskID, uint8 profileRole, uint8 maxScanResponse
 bStatus_t GAP_DeviceDiscoveryRequest( gapDevDiscReq_t *pParams );
 bStatus_t GAP_EstablishLinkReq( gapEstLinkReq_t *pParams );
 bStatus_t GATT_WriteCharValue( uint16 connHandle, attWriteReq_t *pReq, uint8 taskId );
+bStatus_t GATT_WriteNoRsp( uint16 connHandle, attWriteReq_t *pReq, uint8 taskId );
 
 #endif /* BLE_H */
 
