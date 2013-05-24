@@ -122,6 +122,33 @@ bStatus_t GATT_WriteCharValue( uint16 connHandle, attWriteReq_t *pReq, uint8 tas
   return 1;
 }
 
+bStatus_t GATT_WriteNoRsp( uint16 connHandle, attWriteReq_t *pReq, uint8 taskId )
+{
+  uint8 buf[20];
+  uint8 len = 0;
+  
+  buf[len++] = 0x01;
+  memcpy(&buf[len], "\xB6\xFD", 2);
+  len += 2;
+  
+  buf[len++] = 0x04 + pReq->len;
+  
+  memcpy(&buf[len], &connHandle, 2);
+  len += 2;
+  memcpy(&buf[len], &pReq->handle, 2);
+  len += 2;
+  memcpy(&buf[len], pReq->value, pReq->len);
+  len += pReq->len;
+  
+#if defined(__AVR_ATmega328P__)
+  (*TX).write(buf, len);
+#else
+  Serial1.write(buf, len);
+#endif
+
+  return 1;
+}
+
 /*
 bStatus_t GAP_TerminateLinkReq( uint8 taskID, uint16 connectionHandle )
 {
