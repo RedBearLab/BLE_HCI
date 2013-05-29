@@ -5,6 +5,8 @@ Allows external System or MCU to control BLE chip (CC2540) using Bluetooth HCI m
 
 The libraries was written for Python and Arduino. Tested on Windows and Mac OS X, but this is still a work in progress, not all HCI commands and events have been implemented or fully tested.
 
+The HCI firmware is built from TI CC254x SDK, refer to HostTestApp project if you want to study the firmware code.
+
 Example 1
 =========
 
