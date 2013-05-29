@@ -68,3 +68,11 @@ Requirements:<br/>
 
 How it works:<br/>
 Similar to the Example 1, the Arduino will keep tracks of HCI events from the serial port. You can see those events and send command using the Arduino IDE's Serial Monitor.
+
+Supported Arduino boards or compatible:
+1. Arduino UNO (R3)<br/>
+2. Arduino Leonardo (R3)<br/>
+3. Arduino Mega 2560 (R3)<br/>
+4. Seeeduino V3.0 (Atmega 328P)<br/>
+3. Teensy 3.0<br/>
+Write to us if any other boards you tested.<br/>
