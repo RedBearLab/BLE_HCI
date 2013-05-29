@@ -1,11 +1,11 @@
 BLE_HCI
 =======
 
-Allows external System or MCU to control BLE chip (CC2540) using Bluetooth HCI mode such as Windows/Linux/Mac, Arduino (AVR), Respberry Pi (ARM11), etc.
+Allows external systems or MCUs to control BLE chip (CC2540) using Bluetooth HCI mode such as Windows/Linux/Mac, Arduino (AVR), Teensy 3.0 (ARM Cortex M4), Respberry Pi (ARM11), etc.
 
-The libraries was written for Python and Arduino. Tested on Windows and Mac OS X, but this is still a work in progress, not all HCI commands and events have been implemented or fully tested.
+The libraries was written for Python and Arduino. Tested on Windows, Linux and Mac OS X This is in beta and still a work in progress, not all HCI commands and events have been implemented or fully tested.
 
-The HCI firmware is built from TI CC254x SDK, refer to HostTestApp project if you want to study the firmware code.
+The HCI firmware is built from TI CC254x SDK, refer to the HostTestApp project if you want to study the firmware code.
 
 Example 1
 =========
@@ -44,6 +44,11 @@ Press 'd' to start discovery, it will show if any device is found, and then pres
 Press '1', it will send a string 'Hello World!' to the device and press '2' will send 'I love BLE!'.
 
 You can do many other interesting things as you want with BLE.
+
+Supported systems:<br/>
+1. Windows<br/>
+2. Linux (includes Raspberry Pi)<br/>
+3. Mac OS X<br/>
 
 Example 2
 =========
