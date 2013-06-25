@@ -1,6 +1,6 @@
 
-#ifndef BLE_H
-#define BLE_H
+#ifndef BLE_HCI_H
+#define BLE_HCI_H
 
 #include "typedef.h"
 
@@ -17,5 +17,5 @@ bStatus_t GAP_EstablishLinkReq( gapEstLinkReq_t *pParams );
 bStatus_t GATT_WriteCharValue( uint16 connHandle, attWriteReq_t *pReq, uint8 taskId );
 bStatus_t GATT_WriteNoRsp( uint16 connHandle, attWriteReq_t *pReq, uint8 taskId );
 
-#endif /* BLE_H */
+#endif /* BLE_HCI_H */
 
