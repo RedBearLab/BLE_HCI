@@ -303,7 +303,7 @@ def ble_enable_notification():
 def ble_write_bytes(buf):
   writeReq = attWriteReq_t
   
-  writeReq.handle = '\x10\x00'
+  writeReq.handle = '\x0b\x00'
   writeReq.len    = struct.pack('b', len(buf))
   writeReq.value  = buf
 
@@ -401,7 +401,7 @@ def ble_event_process():
 #
 
 if os.name == 'posix':
-  TX.port = '/dev/tty.usbmodem1411'
+  TX.port = '/dev/tty.usbmodem1431'
 else:
   TX.port = 'COM5'
 TX.baudrate = 115200
@@ -449,6 +449,10 @@ while True:
     elif ch == '2':
         print 'Send "OFF" to the BLE Shield'
         ble_write_bytes('\x90\x00\x00')
+
+    elif ch == '3':
+        print 'Send "HELLO" to the BLE Shield'
+        ble_write_bytes('HELLO');
 
     else:
         print 'Invalid command.'
