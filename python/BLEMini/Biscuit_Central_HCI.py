@@ -277,7 +277,7 @@ def GAPCentralRole_StartDiscovery( mode, activeScan, whiteList ):
 def ble_enable_notification(): 
   writeReq = attWriteReq_t
   
-  writeReq.handle   = '\x16\x00'
+  writeReq.handle   = '\x13\x00'
   writeReq.len      = '\x02'
   writeReq.value    = '\x01\x00'
 
@@ -286,7 +286,7 @@ def ble_enable_notification():
 def ble_write_bytes(buf):
   writeReq = attWriteReq_t
   
-  writeReq.handle = '\x19\x00'
+  writeReq.handle = '\x16\x00'
   writeReq.len    = struct.pack('b', len(buf))
   writeReq.value  = buf
 
