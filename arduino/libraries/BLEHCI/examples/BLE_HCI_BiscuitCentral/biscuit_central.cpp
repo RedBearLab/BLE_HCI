@@ -40,7 +40,7 @@ void biscuit_central_write_bytes(uint8 *buf, uint8 len)
 {
   attWriteReq_t writeReq;
   
-  writeReq.handle = 0x0019;
+  writeReq.handle = 0x0016;
   writeReq.len = len;
   memcpy(writeReq.value, buf, len);
 
@@ -51,7 +51,7 @@ void biscuit_central_enable_notification()
 {
   attWriteReq_t writeReq;
   
-  writeReq.handle = 0x0016;
+  writeReq.handle = 0x0013;
   writeReq.len = 2;
   writeReq.value[0] = 0x01;
   writeReq.value[1] = 0x00;

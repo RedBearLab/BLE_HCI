@@ -40,7 +40,7 @@ void bleshield_central_write_bytes(uint8 *buf, uint8 len)
 {
   attWriteReq_t writeReq;
   
-  writeReq.handle = 0x0010;
+  writeReq.handle = 0x000b;
   writeReq.len = len;
   memcpy(writeReq.value, buf, len);
 
