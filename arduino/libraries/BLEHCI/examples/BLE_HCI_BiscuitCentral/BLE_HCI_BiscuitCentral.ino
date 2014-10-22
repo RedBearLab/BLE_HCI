@@ -65,7 +65,7 @@ byte ble_event_process()
         int8_t rssi = buf[11];
         p("RSSI: %d\r\n", rssi);
         
-        p("MAC Address: %02X:%02X:%02X:%02X\r\n", buf[10], buf[9], buf[8], buf[7]);
+        p("MAC Address: %02X:%02X:%02X:%02X:%02X:%02X\r\n", buf[10], buf[9], buf[8], buf[7], buf[6], buf[5]);
       }
       break;
       
