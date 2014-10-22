@@ -58,6 +58,17 @@ byte ble_event_process()
 
   switch (event)
   {
+    case 0x060D: // GAP_DeviceInformation
+      {
+        p("GAP_DeviceInformation\r\n");
+        
+        int8_t rssi = buf[11];
+        p("RSSI: %d\r\n", rssi);
+        
+        p("MAC Address: %02X:%02X:%02X:%02X\r\n", buf[10], buf[9], buf[8], buf[7]);
+      }
+      break;
+      
     case 0x0601: // GAP_DeviceDiscoveryDone
       {
         p("GAP_DeviceDiscoveryDone\r\n");
