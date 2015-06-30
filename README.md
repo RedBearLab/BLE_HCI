@@ -39,11 +39,13 @@ When you connect the BLE Mini (HCI) to your PC via the USB port, it will functio
 The Biscuit central Python script controls the virtual COM port, sending BLE command over the port, and listening to the HCI events.<br/>
 
 You need to change the following lines to match your COM port and bardrate:<br/>
-if os.name == 'posix':<br/>
-  TX.port = '/dev/tty.usbmodem1431'<br/>
-else:<br/>
-  TX.port = 'COM5'<br/>
-TX.baudrate = 115200<br/>
+```python
+if os.name == 'posix':
+    TX.port = '/dev/tty.usbmodem1431'
+else:
+    TX.port = 'COM5'
+TX.baudrate = 115200
+```
 
 Press 'd' to start discovery, it will show if any device is found, and then press 'e' to establish a BLE link with the device, you need then enable the notification before you can receive data from the device.
 
